@@ -50,7 +50,7 @@ tp = neurio.TokenProvider(key=key, secret=secret)
 nc = neurio.Client(token_provider=tp)
 user_info = nc.get_user_information()
 
-sleep_interval = os.getenv('POLL_INTERVAL', 60)
+sleep_interval = int(os.getenv('POLL_INTERVAL', 60))
 
 # start loop
 while True:
