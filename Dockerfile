@@ -1,6 +1,6 @@
-FROM alpine:latest
+FROM alpine:3.12
 
-RUN apk add --update python py-pip
+RUN apk add --update py-pip
 RUN pip install --upgrade pip
 RUN pip install neurio influxdb
 
@@ -18,4 +18,4 @@ ENV INFLUXDB   neurio
 # time between API hits in seconds
 ENV POLL_INTERVAL 60
 
-CMD [ "python", "neurio-influx.py" ]
+CMD [ "python3", "neurio-influx.py" ]
