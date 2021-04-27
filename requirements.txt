@@ -1,0 +1,2 @@
+neurio==0.3.1
+influxdb==5.3.1

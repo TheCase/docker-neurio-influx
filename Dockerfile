@@ -2,7 +2,8 @@ FROM alpine:3.12
 
 RUN apk add --update py-pip
 RUN pip install --upgrade pip
-RUN pip install neurio influxdb
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 COPY *.py /
 
