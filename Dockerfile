@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3
 
 RUN apk add --update py-pip
 RUN pip install --upgrade pip
