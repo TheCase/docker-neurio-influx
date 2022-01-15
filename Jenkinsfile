@@ -1,9 +1,13 @@
 pipeline {
-   agent any
-   environment {
+  agent {
+     kubernetes {
+      yamlFile 'jenkins-pod.yml'
+     }
+  }
+  environment {
        registry = "thecase/neurio-influx"
-   }
-   stages {
+  }
+  stages {
        stage('Build and Publish') {
            environment {
                registryCredential = 'dockerhub'
