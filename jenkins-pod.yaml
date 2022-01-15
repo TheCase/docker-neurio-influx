@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-agent
+spec:
+  containers:
+    - name: docker-build
+      image: docker:20-dind
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - name: storage
+          mountPath: /var/lib/docker
+        - name: tmp
+          mountPath: /tmp
+  volumes:
+    - name: storage
+      emptyDir: {}
+    - name: tmp
+      emptyDir: {}
