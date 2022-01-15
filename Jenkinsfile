@@ -1,28 +1,28 @@
 pipeline {
   agent {
-     kubernetes {
+    kubernetes {
       yamlFile 'jenkins-pod.yml'
-     }
+    }
   }
-  environment {
-       registry = "thecase/neurio-influx"
-  }
-  stages {
-       stage('Build and Publish') {
-           environment {
-               registryCredential = 'dockerhub'
-           }
-           steps{
-               script {
-                   def appimage = docker.build registry + ":$BUILD_NUMBER"
-                   docker.withRegistry( '', registryCredential ) {
-                       appimage.push()
-                       appimage.push('latest')
-                   }
-               }
-           }
-       }
-   /*
+  environment {
+    registry = "thecase/neurio-influx"
+  }
+  stages {
+    stage('Build and Publish') {
+      environment {
+        registryCredential = 'dockerhub'
+      }
+      steps {
+        script {
+          def appimage = docker.build registry + ":$BUILD_NUMBER"
+          docker.withRegistry('', registryCredential) {
+            appimage.push()
+            appimage.push('latest')
+          }
+        }
+      }
+    }
+    /*
       stage ('Deploy') {
            steps {
                script{
@@ -32,6 +32,5 @@ pipeline {
            }
        }
    */
-   }
+  }
 }
-
