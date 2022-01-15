@@ -13,7 +13,7 @@ pipeline {
         registryCredential = 'dockerhub'
       }
       steps {
-        container(docker-build) { 
+        container(dockerBuild) { 
           sh 'ls -la /usr/local/bin'
           def appimage = docker.build registry + ":$BUILD_NUMBER"
           docker.withRegistry('', registryCredential) {
