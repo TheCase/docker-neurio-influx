@@ -14,14 +14,14 @@ pipeline {
       }
       steps {
         container(build) { 
-          script {
+          //script {
             sh 'ls -la /usr/local/bin'
             def appimage = docker.build registry + ":$BUILD_NUMBER"
             docker.withRegistry('', registryCredential) {
               appimage.push()
               appimage.push('latest')
             }
-          }
+          //}
         }
       }
     }
