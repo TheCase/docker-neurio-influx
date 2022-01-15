@@ -4,7 +4,7 @@ metadata:
   name: jenkins-agent
 spec:
   containers:
-    - name: docker-build
+    - name: dockerBuild
       image: docker:20-dind
       securityContext:
         privileged: true
